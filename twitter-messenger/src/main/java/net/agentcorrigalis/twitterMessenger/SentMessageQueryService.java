@@ -18,14 +18,14 @@ public class SentMessageQueryService {
 		twitSession = SessionManager.getTwitterSession();
 	}
 	
-	public void printAllCompactDirectMessages() throws TwitterException {
+	public void printAllMessages() throws TwitterException {
 		List<CompactDirectMessage> CompactDirectMessages = getAllSentMessages();
 		for (CompactDirectMessage CompactDirectMessage : CompactDirectMessages) {
 			System.out.println("From " + CompactDirectMessage.getSender() + "--" + CompactDirectMessage.getId() + "--" + CompactDirectMessage.getContent());
 		}
 	}
 	
-	public void printLastCompactDirectMessage() throws TwitterException {
+	public void printLatestMessage() throws TwitterException {
 		List<CompactDirectMessage> CompactDirectMessages = getAllSentMessages();
 		CompactDirectMessage lastReceived = CompactDirectMessages.get(0);
 		System.out.println("From " + lastReceived.getSender() + "--" + lastReceived.getId() + "--" + lastReceived.getContent());

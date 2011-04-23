@@ -2,5 +2,5 @@
 .classpath
 .settings
 .metadata
-.properties
 target/
+.properties
