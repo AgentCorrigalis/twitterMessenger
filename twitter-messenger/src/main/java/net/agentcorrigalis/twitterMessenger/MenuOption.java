@@ -6,6 +6,7 @@ public enum MenuOption {
 	PRINT_LAST_RECEIVED_MESSAGES('2', "Print Last Received Messages"),
 	PRINT_ALL_SENT_MESSAGES('3', "Print All Sent Messages"),
 	PRINT_LAST_SENT_MESSAGES('4', "Print Last Sent Messages"),
+	SEND_DIRECT_MESSAGE('5', "Send Direct Message"),
 	QUIT('q', "Quit");
 	
 	private char key;

@@ -2,6 +2,7 @@ package net.agentcorrigalis.twitterMessenger;
 
 import static net.agentcorrigalis.twitterMessenger.CommonConstants.MENU_SEPARATOR;
 import static net.agentcorrigalis.twitterMessenger.CommonConstants.NEW_LINE;
+import net.agentcorrigalis.twitterMessenger.MessageQueryService.MessageDirection;
 import twitter4j.TwitterException;
 
 public class Menu {
@@ -39,6 +40,9 @@ public class Menu {
 			case '4': printLatestSentMessage();
 				optionExecuted = true;
 				break;
+			case '5': sendNewDirectMessage();
+				optionExecuted = true;
+				break;
 			case 'q': terminateApplication();
 				optionExecuted = true;
 				break;
@@ -49,23 +53,28 @@ public class Menu {
 	}
 	
 	private void printAllReceivedMessages() {
-		ReceivedMessageQueryService receivedMessageQueryService = new ReceivedMessageQueryService();
-		receivedMessageQueryService.printAllMessages();
+		MessageQueryService messageQueryService = new MessageQueryService();
+		messageQueryService.printAllMessages(MessageDirection.RECEIVED);
 	}
 	
 	private void printLatestReceivedMessage() {
-		ReceivedMessageQueryService receivedMessageQueryService = new ReceivedMessageQueryService();
-		receivedMessageQueryService.printLatestMessage();
+		MessageQueryService messageQueryService = new MessageQueryService();
+		messageQueryService.printLatestMessage(MessageDirection.RECEIVED);
 	}
 
 	private void printAllSentMessages() throws TwitterException {
-		SentMessageQueryService sentMessageQueryService = new SentMessageQueryService();
-		sentMessageQueryService.printAllMessages();
+		MessageQueryService messageQueryService = new MessageQueryService();
+		messageQueryService.printLatestMessage(MessageDirection.SENT);
 	}
 	
 	private void printLatestSentMessage() throws TwitterException {
-		SentMessageQueryService sentMessageQueryService = new SentMessageQueryService();
-		sentMessageQueryService.printLatestMessage();
+		MessageQueryService messageQueryService = new MessageQueryService();
+		messageQueryService.printLatestMessage(MessageDirection.SENT);
+	}
+	
+	private void sendNewDirectMessage() throws IllegalStateException, TwitterException {
+		MessageSenderService messageSenderService = new MessageSenderService();
+		messageSenderService.newMessage();
 	}
 	
 	private void terminateApplication() {
