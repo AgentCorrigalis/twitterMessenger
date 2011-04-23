@@ -35,9 +35,9 @@ public class MessageWriter {
 	private void messageWriter(DirectMessage message) {
 		System.out.println(CommonConstants.MESSAGE_SEPARATOR);
 		System.out.println("Message ID: " + message.getId());
-		System.out.println("To: " + message.getSender());
-		System.out.println("From: " + message.getRecipient());
-		System.out.println("From: " + message.getCreatedAt());
+		System.out.println("To: " + message.getRecipientScreenName());
+		System.out.println("From: " + message.getSenderScreenName());
+		System.out.println("Date: " + message.getCreatedAt());
 		System.out.println(message.getText());
 		System.out.println(CommonConstants.MESSAGE_SEPARATOR);
 	}
