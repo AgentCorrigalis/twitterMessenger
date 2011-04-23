@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import net.agentcorrigalis.twitterMessenger.menu.Menu;
+import net.agentcorrigalis.twitterMessenger.twitter.AuthorisedTwitterSession;
+
 import twitter4j.TwitterException;
 
 public class TwitMsgApp {
@@ -21,9 +24,8 @@ public class TwitMsgApp {
 	}
 	
 	private static void appInitialisation() throws TwitterException, IOException, InterruptedException {
-		SessionManager sessionManager = new SessionManager();
-		sessionManager.openAuthorisedSession();
-		System.out.println("Twitter Session Open for " + SessionManager.getTwitterSession().getScreenName());
+		AuthorisedTwitterSession.openAuthorisedSession();
+		System.out.println("Twitter Session Open for " + AuthorisedTwitterSession.getTwitterSession().getScreenName());
 	}
 
 }

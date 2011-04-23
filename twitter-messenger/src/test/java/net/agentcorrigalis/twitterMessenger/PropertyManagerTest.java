@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class PropertyManagerTest {
 
-	private PropertyManager propertyManager = new PropertyManager();
+	private PropertyService propertyManager = new PropertyService();
 	private Properties properties;
 	
 	@Before

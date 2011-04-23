@@ -1,9 +1,9 @@
 package net.agentcorrigalis.twitterMessenger;
 
 import static org.junit.Assert.*;
-import static net.agentcorrigalis.twitterMessenger.CommonConstants.*;
+import static net.agentcorrigalis.twitterMessenger.common.CommonConstants.*;
 
-import net.agentcorrigalis.twitterMessenger.Menu;
+import net.agentcorrigalis.twitterMessenger.menu.Menu;
 
 import org.junit.Test;
 
