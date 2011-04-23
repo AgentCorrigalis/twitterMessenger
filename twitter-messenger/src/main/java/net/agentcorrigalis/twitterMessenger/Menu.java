@@ -2,6 +2,7 @@ package net.agentcorrigalis.twitterMessenger;
 
 import static net.agentcorrigalis.twitterMessenger.CommonConstants.MENU_SEPARATOR;
 import static net.agentcorrigalis.twitterMessenger.CommonConstants.NEW_LINE;
+import twitter4j.TwitterException;
 
 public class Menu {
 
@@ -23,13 +24,19 @@ public class Menu {
 		return menuDisplay.toString();
 	}
 	
-	public boolean executeOption(char key) {
+	public boolean executeOption(char key) throws TwitterException {
 		Boolean optionExecuted = false;
 		switch (key) {
 			case '1': printAllReceivedMessages();
 				optionExecuted = true;
 				break;
 			case '2': printLatestReceivedMessage();
+				optionExecuted = true;
+				break;
+			case '3': printAllSentMessages();
+				optionExecuted = true;
+				break;
+			case '4': printLatestSentMessage();
 				optionExecuted = true;
 				break;
 			case 'q': terminateApplication();
@@ -49,6 +56,16 @@ public class Menu {
 	private void printLatestReceivedMessage() {
 		ReceivedMessageQueryService receivedMessageQueryService = new ReceivedMessageQueryService();
 		receivedMessageQueryService.printLatestMessage();
+	}
+
+	private void printAllSentMessages() throws TwitterException {
+		SentMessageQueryService sentMessageQueryService = new SentMessageQueryService();
+		sentMessageQueryService.printAllMessages();
+	}
+	
+	private void printLatestSentMessage() throws TwitterException {
+		SentMessageQueryService sentMessageQueryService = new SentMessageQueryService();
+		sentMessageQueryService.printLatestMessage();
 	}
 	
 	private void terminateApplication() {
