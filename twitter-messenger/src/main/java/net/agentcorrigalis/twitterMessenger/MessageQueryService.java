@@ -25,15 +25,15 @@ public class MessageQueryService {
 	
 	public void printAllMessages(MessageDirection direction) {
 		List<CompactDirectMessage> CompactDirectMessages = getAllDirectMessages(direction);
-		for (CompactDirectMessage CompactDirectMessage : CompactDirectMessages) {
-			System.out.println("From " + CompactDirectMessage.getSender() + "--" + CompactDirectMessage.getId() + "--" + CompactDirectMessage.getContent());
+		for (CompactDirectMessage compactDirectMessage : CompactDirectMessages) {
+			messageWriter(compactDirectMessage);
 		}
 	}
 	
 	public void printLatestMessage(MessageDirection direction) {
 		List<CompactDirectMessage> CompactDirectMessages = getAllDirectMessages(direction);
-		CompactDirectMessage lastReceived = CompactDirectMessages.get(0);
-		System.out.println("From " + lastReceived.getSender() + "--" + lastReceived.getId() + "--" + lastReceived.getContent());
+		CompactDirectMessage latestMessage = CompactDirectMessages.get(0);
+		messageWriter(latestMessage);
 	}
 	
 	private List<CompactDirectMessage> getAllDirectMessages(MessageDirection direction) {
@@ -65,6 +65,16 @@ public class MessageQueryService {
         CompactDirectMessageComparator CompactDirectMessageComparator = new CompactDirectMessageComparator();
         Collections.sort(CompactDirectMessages, CompactDirectMessageComparator);
         return CompactDirectMessages;
+	}
+	
+	private void messageWriter(CompactDirectMessage message) {
+		System.out.println(CommonConstants.MESSAGE_SEPARATOR);
+		System.out.println("Message ID: " + message.getId());
+		System.out.println("To: " + message.getSender());
+		System.out.println("From: " + message.getRecipient());
+		System.out.println("From: " + message.getDate());
+		System.out.println(message.getContent());
+		System.out.println(CommonConstants.MESSAGE_SEPARATOR);
 	}
 	
 	
