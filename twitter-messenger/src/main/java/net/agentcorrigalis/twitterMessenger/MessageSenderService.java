@@ -13,20 +13,15 @@ import twitter4j.User;
 
 public class MessageSenderService {
 
-	private TwitterServiceImpl twitterService;
+	private TwitterServiceImpl twitterService = new TwitterServiceImpl();
 	private List<User> friends;
-
-	public void newMessage() throws IllegalStateException, TwitterException,
-			IOException {
-		populateFriendMap();
+	
+	public void newMessage() throws IllegalStateException, TwitterException, IOException {
+		friends = twitterService.getFriends();
 		displayFriendMenu();
 		BufferedReader optionReader = new BufferedReader(new InputStreamReader(System.in));
 		String friendOption = optionReader.readLine();
 		executeOption(friendOption.charAt(0));
-	}
-
-	private void populateFriendMap() throws IllegalStateException, TwitterException {
-		friends = twitterService.getFriends();
 	}
 
 	private void displayFriendMenu() throws IOException {
